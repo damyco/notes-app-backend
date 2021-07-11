@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/notes/
+POST http://localhost:3002/api/notes/
 content-type: application/json
 
 {
     "fsdf": "dfdsfdsf",
-    "LOL": "sample",
+    "content": "sam",
     "important": true
 }

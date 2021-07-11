@@ -26,7 +26,7 @@ app.get("/api/notes", (request, response) => {
   });
 });
 
-app.post("/api/notes", (request, response) => {
+app.post("/api/notes", (request, response, next) => {
   // console.log(request.headers) to check request headers
   const body = request.body;
 
@@ -43,9 +43,13 @@ app.post("/api/notes", (request, response) => {
     date: new Date(),
   });
 
-  note.save().then((savedNote) => {
-    response.json(savedNote);
-  });
+  note
+    .save()
+    .then((savedNote) =>  savedNote.toJSON())
+    .then((savedAndFormattedNote) => {
+      response.json(savedAndFormattedNote);
+    })
+    .catch((error) => next(error));
 });
 
 app.get("/api/notes/:id", (request, response, next) => {
@@ -94,6 +98,8 @@ const errorHandler = (error, request, response, next) => {
   // CastError exception - error was caused by an invalid object id for Mongo.
   if (error.name === "CastError") {
     return response.status(400).send({ error: "malformatted id" });
+  } else if (error.name === "ValidationError") {
+    return response.status(400).json({ error: error.message });
   }
 
   next(error);
