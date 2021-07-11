@@ -106,3 +106,7 @@ dist
 # Folders
 practice/
 **/desktop.ini
+
+#config
+.prettierc
+.eslintrc.json

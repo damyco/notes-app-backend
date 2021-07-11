@@ -45,7 +45,7 @@ app.post("/api/notes", (request, response, next) => {
 
   note
     .save()
-    .then((savedNote) =>  savedNote.toJSON())
+    .then((savedNote) => savedNote.toJSON())
     .then((savedAndFormattedNote) => {
       response.json(savedAndFormattedNote);
     })
@@ -96,7 +96,7 @@ app.use(unknownEndpoint);
 const errorHandler = (error, request, response, next) => {
   console.error(error.message);
   // CastError exception - error was caused by an invalid object id for Mongo.
-  if (error.name === "CastError") {
+  if (error.name == "CastError") {
     return response.status(400).send({ error: "malformatted id" });
   } else if (error.name === "ValidationError") {
     return response.status(400).json({ error: error.message });
