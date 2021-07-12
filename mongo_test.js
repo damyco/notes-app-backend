@@ -9,7 +9,7 @@ if (process.argv.length > 3) {
 
 const password = process.argv[2];
 
-const url = `mongodb+srv://damycofullstack:${password}@cluster0.0xf4b.mongodb.net/note-app?retryWrites=true&w=majority`;
+const url = null // was used before
 
 mongoose.connect(url, {
   useNewUrlParser: true,
