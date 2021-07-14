@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \\\"Error: no test specified\\\" && exit 1",
     "build:ui": "rm -rf build && cd C:/code/UoH_MOOC/practice && npm run build --prod && cp -r build C:/code/notes-backend",
     "deploy": "git push heroku main",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push && npm run deploy",
-    "logs:prod": "heroku logs --tail"
+    "logs:prod": "heroku logs --tail",
+    "test": "jest --verbose"
   },
   "author": "Dawid M.",
   "license": "MIT",
@@ -21,7 +21,10 @@
     "mongoose": "^5.13.2"
   },
   "devDependencies": {
+    "jest": "^27.0.6",
     "nodemon": "^2.0.9"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
-
 }
