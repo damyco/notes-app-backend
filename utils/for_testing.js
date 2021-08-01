@@ -16,3 +16,6 @@ module.exports = {
   palindrome,
   average,
 };
+
+
+// testing where multiple components of the system are being tested as a group, is called integration testing.
