@@ -2,7 +2,8 @@ POST http://localhost:3002/api/notes/
 content-type: application/json
 
 {
-    "fsdf": "dfdsfdsf",
-    "content": "sdddssdam",
-    "important": true
+   
+    "content": "sdddssdam dsfdsfsfsdf",
+    "important": true,
+    "userId": "61114799f18de9024c43292e"
 }
